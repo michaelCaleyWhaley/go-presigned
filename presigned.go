@@ -38,4 +38,6 @@ func main() {
 	for _, object := range output.Contents {
 		log.Printf("key=%s size=%d", aws.ToString(object.Key), object.Size)
 	}
+
+	// https://stackoverflow.com/questions/41544554/how-to-run-aws-sdk-with-credentials-from-variables
 }
