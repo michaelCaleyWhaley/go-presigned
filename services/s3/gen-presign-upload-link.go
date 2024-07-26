@@ -10,9 +10,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 )
 
-func GeneratePresignedUrl(presignClient *s3.PresignClient) *v4.PresignedHTTPRequest {
+func GeneratePresignedUrl(presignClient *s3.PresignClient, fileName string) *v4.PresignedHTTPRequest {
 	bucketName := "go-presigned"
-	objectKey := "test_pic.JPG"
+	objectKey := fileName
 	lifetimeSecs := int64(600)
 
 	request, err := presignClient.PresignPutObject(context.TODO(), &s3.PutObjectInput{
@@ -27,4 +27,5 @@ func GeneratePresignedUrl(presignClient *s3.PresignClient) *v4.PresignedHTTPRequ
 	}
 
 	return request
+
 }
