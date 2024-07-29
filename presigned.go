@@ -2,8 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	controllerPresigned "presigned.go/controllers/generate-upload-url"
-	controllerHome "presigned.go/controllers/home"
+	"presigned.go/controllers"
 	"presigned.go/initialisers"
 )
 
@@ -14,7 +13,8 @@ func main() {
 
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*")
-	r.GET("/", controllerHome.Home)
-	r.POST("/presigned", controllerPresigned.GeneratePresignedUrl)
+	r.GET("/", controllers.Home)
+	r.POST("/presigned", controllers.GeneratePresignedUrl)
+	r.POST("/download", controllers.GeneratePresignedDownloadUrl)
 	r.Run("localhost:3000")
 }

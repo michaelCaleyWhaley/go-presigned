@@ -1,4 +1,4 @@
-package controllerPresigned
+package controllers
 
 import (
 	"net/http"
