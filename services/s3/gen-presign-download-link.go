@@ -26,7 +26,6 @@ func GeneratePresignedDownloadLink(presignClient *s3.PresignClient, fileName str
 		log.Printf("Couldn't get a presigned request to get %v:%v. Here's why: %v\n",
 			bucketName, objectKey, err)
 	}
-
 	return request
 
 }

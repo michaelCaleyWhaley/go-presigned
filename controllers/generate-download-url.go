@@ -7,8 +7,12 @@ import (
 	s3Client "presigned.go/services/s3"
 )
 
+type ReqGetBody struct {
+	FileName string `json:"fileName"`
+}
+
 func GeneratePresignedDownloadUrl(c *gin.Context) {
-	var reqBody ReqBody
+	var reqBody ReqGetBody
 	if err := c.BindJSON(&reqBody); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"presignedDownloadUrl": false,
